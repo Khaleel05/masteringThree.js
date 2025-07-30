@@ -27,4 +27,14 @@ renderer.setSize(window.innerWidth, window.innerHeight); // Set the size of the 
 document.body.appendChild(renderer.domElement);
 
 // animate the scene
-renderer.render(scene, camera); // Render the scene from the perspective of the camera
+function animate(){
+    requestAnimationFrame(animate);//Request the next frame to animate. 
+
+    cube.rotation.x += 0.01;//Rotate the cube around the x-axis
+    cube.rotation.y += 0.01;//Rotate the cube around the y-axis
+    
+    renderer.render(scene, camera); // Render the scene from the perspective of the camera
+}
+//renderer.render(scene, camera); // Render the scene from the perspective of the camera
+
+animate(); // Start the animation loop
