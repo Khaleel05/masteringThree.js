@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 // create a canvas 
 
@@ -33,9 +34,28 @@ scene.add(light);
 //5. renderer
 const renderer = new THREE.WebGLRenderer({ canvas});
 renderer.setSize(window.innerWidth, window.innerHeight);
-//renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setPixelRatio(window.devicePixelRatio);
 
 
 
-// animate 
-renderer.render(scene, camera); // Render the scene from the perspective of the camera
+//6. add Orbit control
+const controls  = new OrbitControls(camera, renderer.domElement);
+controls.enaboleDamping = true;
+controls.dampingFactor = 0.05;
+controls.enableZoom = true;
+controls.enablePan = true;
+
+//7. add animation
+function animate(){
+    requestAnimationFrame(animate);
+    dodecahedron.rotation.x += 0.01;
+    dodecahedron.rotation.y += 0.01;
+    
+    box.rotation.y += 0.005;
+    
+    controls.update();
+    
+    renderer.render(scene, camera); // Render the scene from the perspective of the camera
+};
+
+animate();
