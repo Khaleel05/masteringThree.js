@@ -15,11 +15,11 @@ camera.position.z = 5; // Position the camera 5 units away from the origin along
 
 //3.object
 const geometry  = new THREE.DodecahedronGeometry(1, 0);
-const material = new THREE.MeshBasicMaterial({ color: '#468565' });
+const material = new THREE.MeshLambertMaterial({ color: '#468565', emmisive:'#468565'});
 const dodecahedron = new THREE.Mesh(geometry, material);
 
 const boxGeometry = new THREE.BoxGeometry(2, 0.1, 2);
-const boxMaterial = new THREE.MeshBasicMaterial({ color: '#B4B4B3'});
+const boxMaterial = new THREE.MeshLambertMaterial({ color: '#B4B4B3', emmisive:'#B4B4B3' });
 const box = new THREE.Mesh(boxGeometry, boxMaterial);
 box.position.y = -1.5;
 
